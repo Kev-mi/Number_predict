@@ -13,7 +13,7 @@ def load_model(directory):
     for file in os.listdir(directory):
         if file.endswith('.sav'):
             models_list.append(file)
-    selected_model = st.sidebar.selectbox('Select a model', (models_list))
+    selected_model = models_list[0]
     loaded_model = joblib.load(directory + '/' + selected_model)
     return loaded_model
 
