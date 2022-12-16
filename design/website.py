@@ -22,18 +22,12 @@ def upload_number_image():
     uploaded_image = st.file_uploader("Choose a file")
     if uploaded_image is not None:
         st.image(uploaded_image)
-        #img = cv2.cvtColor(uploaded_image, cv2.COLOR_BGR2GRAY)
-        st.write(type(uploaded_image))
-        image = Image.open(uploaded_image)
-        st.image(image)
         image = np.array(image)
         imageprep_2 = cv2.resize(image, (28, 28), interpolation=cv2.INTER_LINEAR)
         imageprep_2 = cv2.bitwise_not(imageprep_2)
         model = load_model(os.getcwd() + '/models')
         imageprep_2 = cv2.cvtColor(imageprep_2, cv2.COLOR_BGR2GRAY)
-        imageprep_2 = np.reshape(imageprep_2, (28, 28))
-        st.image(imageprep_2)
-        st.write(imageprep_2.shape)
+        imageprep_2 = np.reshape(imageprep_2, (1, 28 * 28))
         st.write(model.predict(imageprep_2))
 
 
