@@ -24,10 +24,7 @@ import design.website as webdesign
 def image_prep(img):
     st.image(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    st.image(img)
     imageprep_2 = cv2.resize(img, (28, 28), interpolation=cv2.INTER_LINEAR)
-    imageprep_2 = cv2.bitwise_not(imageprep_2)
-    st.image(imageprep_2)
     img = np.reshape(imageprep_2, (1, 28 * 28))
     return img
 
