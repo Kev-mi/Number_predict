@@ -22,7 +22,6 @@ import streamlit as st
 import design.website as webdesign
 
 def image_prep(img):
-    st.image(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     imageprep_2 = cv2.resize(img, (28, 28), interpolation=cv2.INTER_LINEAR)
     img = np.reshape(imageprep_2, (1, 28 * 28))
@@ -74,5 +73,4 @@ def predict(image):
     image = image_prep(image)
     model = webdesign.load_model(os.getcwd() + '/models')
     prediction = model.predict(image)
-    st.image(image)
     return prediction[0]
