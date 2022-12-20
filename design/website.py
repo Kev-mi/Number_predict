@@ -22,7 +22,7 @@ def upload_number_image():
     uploaded_image = st.file_uploader("Choose a file")
     if uploaded_image is not None:
         st.image(uploaded_image)
-        image = np.array(image)
+        image = np.array(uploaded_image)
         imageprep_2 = cv2.resize(image, (28, 28), interpolation=cv2.INTER_LINEAR)
         imageprep_2 = cv2.bitwise_not(imageprep_2)
         model = load_model(os.getcwd() + '/models')
