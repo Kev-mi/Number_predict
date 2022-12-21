@@ -19,7 +19,7 @@ def load_model(directory):
 
 
 def upload_number_image():
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_image = st.file_uploader("Upload image of number here and it will try to predict the number")
     if uploaded_file is not None:
         img = Image.open(uploaded_file)
         img = img.convert('L')
