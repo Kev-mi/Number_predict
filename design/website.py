@@ -32,6 +32,7 @@ def upload_number_image():
 
 
 def draw_number():
+    st.write("Draw number in the canvas below and it will try to predict the number")
     stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 2)
     realtime_update = st.sidebar.checkbox("Update in realtime", True)
     canvas_result = st_canvas(stroke_width=25, stroke_color="#fff", background_color="#000", height=280, width=280, drawing_mode="freedraw", key="canvas",)
