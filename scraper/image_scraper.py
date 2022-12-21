@@ -33,8 +33,9 @@ def get_driver(website_url):
 
 
 def number_image_scraper():
+    st.write("Select number to scrape images of on the left and the click on the button below to start")
     sel_number = st.sidebar.selectbox('Select number to scrape', (0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
-    number_of_images = st.sidebar.slider('select how many images to download', 1, 24, 1)
+    number_of_images = 24
     numbers = {0: ("Number zero", "pictures of number 0", "pictures of number zero", "number 0", "siffran 0", "siffran noll", "bilder på siffran noll", "bilder på siffran 0"),
                1: ("Number one", "pictures of number 1", "pictures of number one", "number 1", "siffran 1", "siffran ett", "bilder på siffran ett", "bilder på siffran 1"),
                2: ("Number two", "pictures of number 2", "pictures of number two", "number 2", "siffran 2", "siffran två", "bilder på siffran två", "bilder på siffran 2"),
