@@ -19,16 +19,16 @@ def load_model(directory):
 
 
 def upload_number_image():
-    uploaded_image = st.file_uploader("Choose a file")
-    if uploaded_image is not None:
-        st.image(uploaded_image)
-        image = np.array(uploaded_image)
-        imageprep_2 = cv2.resize(image, (28, 28), interpolation=cv2.INTER_LINEAR)
-        imageprep_2 = cv2.bitwise_not(imageprep_2)
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        img = Image.open(uploaded_file)
+        img = img.convert('L')
+        img = img.resize((28, 28))
+        img = np.bitwise_not(img)
+        img = np.array(img, dtype=np.float64)
+        image_array = img.flatten()
         model = load_model(os.getcwd() + '/models')
-        imageprep_2 = cv2.cvtColor(imageprep_2, cv2.COLOR_BGR2GRAY)
-        imageprep_2 = np.reshape(imageprep_2, (1, 28 * 28))
-        st.write(model.predict(imageprep_2))
+        st.write(model.predict([image_array]))
 
 
 def draw_number():
